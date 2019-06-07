@@ -1,0 +1,46 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: gateway-test
+  namespace: test
+  annotations:
+    flux.weave.works/automated: "false"
+    flux.weave.works/tag.container: semver:*
+spec:
+  releaseName: gateway-test
+  chart:
+    git: git@github.com:<your repo>                                 # Repository where your Gateway Helm Chart is located, e.g. git@github.com:wynnel/puma-example-environment-configuration
+    path: charts/gateway
+    ref: master
+  valuesFrom:
+  - secretKeyRef:
+      name: image-creds
+      key: image-creds.yaml
+  - secretKeyRef:
+      name: gateway-license
+      key: license.yaml
+  - secretKeyRef:
+      name: env
+      key: env.yaml
+  values:
+    replicaCount: 1
+    container:
+      image: <your repository>/repository/docker-hosted/gateway     # Repository name, e.g docker.sandbox2.apimgcp.com
+      tag: '<your image tag>'                                       # Image tag version, e.g 1.0
+    imageCredentials:
+      name: "<your repository>"                                     # Repository name, e.g docker.sandbox2.apimgcp.com
+      registry: "<your repository>"                                 # Repository name, e.g docker.sandbox2.apimgcp.com
+      username: "<your repository login>"                           # Repository login credential, e.g admin
+    hazelcast:
+      enabled: false
+    service:  
+      ports:
+        - name: http
+          internal: 8080
+          external: 80
+        - name: https
+          internal: 8443
+          external: 443
+
+
