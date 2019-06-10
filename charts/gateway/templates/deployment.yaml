@@ -74,6 +74,12 @@ spec:
                   name: {{ .Values.gateway.customTlsKey.secretName }}
                   key: {{ .Values.gateway.customTlsKey.cert }}
 {{- end }}
+{{- range $name, $value := .Values.gateway.env }}
+{{- if not (empty $value) }}
+            - name: {{ $name | quote }}
+              value: {{ $value | quote }}
+{{- end }}
+{{- end }}
 {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             exec:
