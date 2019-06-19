@@ -2,13 +2,13 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: gateway-dev
-  namespace: dev
+  name: gateway-prod
+  namespace: prod
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.container: semver:*
 spec:
-  releaseName: gateway-dev
+  releaseName: gateway-prod
   forceUpgrade: true
   chart:
     git: git@github.com:kevinm444/puma-example-environment-configuration                                 # Repository where your Gateway Helm Chart is located, e.g. git@github.com:wynnel/puma-example-environment-configuration
