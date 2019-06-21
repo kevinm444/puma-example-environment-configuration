@@ -27,20 +27,20 @@ spec:
     replicaCount: 1
     container:
       image: docker.sandbox2.apimgcp.com/repository/docker-hosted/gateway     # Repository name, e.g docker.sandbox2.apimgcp.com
-      tag: '14'                                       # Image tag version, e.g 1.0
+      tag: '15'                                       # Image tag version, e.g 1.0
     imageCredentials:
       name: "docker.sandbox2.apimgcp.com"                                     # Repository name, e.g docker.sandbox2.apimgcp.com
       registry: "docker.sandbox2.apimgcp.com"                                 # Repository name, e.g docker.sandbox2.apimgcp.com
       username: "admin"                           # Repository login credential, e.g admin
     hazelcast:
       enabled: false
-    service:  
+    service:
       ports:
-        - name: http
-          internal: 8080
-          external: 80
-        - name: https
-          internal: 8443
-          external: 443
+      - name: http
+        internal: 8080
+        external: 80
+      - name: https
+        internal: 8443
+        external: 443
 
 
