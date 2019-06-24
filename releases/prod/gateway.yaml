@@ -30,8 +30,8 @@ spec:
       image: index.docker.io/km94/gateway     # Repository name, e.g docker.sandbox2.apimgcp.com
       tag: '1'                                       # Image tag version, e.g 1.0
     imageCredentials:
-      name: "docker.io"                                     # Repository name, e.g docker.sandbox2.apimgcp.com
-      registry: "docker.io"                                 # Repository name, e.g docker.sandbox2.apimgcp.com
+      name: "index.docker.io/km94/gateway"                                     # Repository name, e.g docker.sandbox2.apimgcp.com
+      registry: "index.docker.io/km94/gateway"                                 # Repository name, e.g docker.sandbox2.apimgcp.com
       username: "admin"                           # Repository login credential, e.g admin
     hazelcast:
       enabled: false
