@@ -27,10 +27,12 @@ spec:
   values:
     replicaCount: 1
     container:
-      image: index.docker.io/km94/gateway     # Repository name, e.g docker.sandbox2.apimgcp.com
+      image: docker.io/km94/gateway     # Repository name, e.g docker.sandbox2.apimgcp.com
       tag: '1'                                       # Image tag version, e.g 1.0
-    imagePullSecrets:
-      -name : examplekey
+    imageCredentials:
+      name: "gatewaycreds"                                     # Repository name, e.g docker.sandbox2.apimgcp.com
+      registry: "https://index.docker.io/v1/"                                 # Repository name, e.g docker.sandbox2.apimgcp.com
+      username: "km94"                           # Repository login credential, e.g admin
     hazelcast:
       enabled: false
     service:
